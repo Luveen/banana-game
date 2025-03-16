@@ -1,0 +1,256 @@
+body {
+  background-image: url(../assets/login-background-image.jpg);
+  background-size: cover; /* Ensure the background image covers the entire screen */
+}
+.heading {
+  color: #ffd700;
+  
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+.login-fields {
+  padding: 40px;
+  height: 500px;
+  width: 662px;
+  background: linear-gradient(
+    145deg,
+    #f3c4f7,
+    #A062C4
+  );
+  box-shadow: inset 0 0 10px #D9D9D9,
+    0 4px 6px #A062C4;
+  border-radius: 12px;
+  margin: 0 auto;
+}
+.login-fields h1 {
+  color: #2b002fe6;
+  padding-bottom: 20px;
+  letter-spacing: 5%;
+  
+}
+.login-fields input{
+    direction: none;
+    border-radius: 8px;
+    background: transparent;
+    border: 3px solid black;
+    width: 548px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+/* button css */
+.couche1{
+	/* position: relative; */
+	-webkit-border-radius: 11px;
+	-moz-border-radius: 11px;
+	border-radius: 11px;
+	width:300px;
+	height:80px;
+    cursor:pointer;
+    margin : -10px auto;
+    padding-top: 20px;
+}
+
+.couche2{
+	position:absolute;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	width:294px;
+	height:44px;
+	margin-top:3px;
+	margin-left:3px;
+	background:#FDA80D;
+	-webkit-box-shadow: 0px 9px 0px #AF6B06;
+    -moz-box-shadow: 0px 9px 0px #AF6B06;
+    box-shadow: 0px 9px 0px #AF6B06;
+
+}
+
+.couche23{
+	position:absolute;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	width:292px;
+	height:30px;
+	margin-top:5px;
+	margin-left:1px;
+    -webkit-box-shadow: 0px -4px 5px 0px #FFDC33;
+    -moz-box-shadow:    0px -4px 5px 0px #FFDC33;
+	box-shadow:         0px -4px 5px 0px #FFDC33;
+
+
+}
+
+.couche3{
+	position:absolute;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-top:0px;
+	margin-left:5px;
+	width:281px;
+	height:22px;
+	background:rgba(255,187,42,1);
+	-webkit-box-shadow: 0px 4px 3px 0px #FE8906;
+	-moz-box-shadow:    0px 4px 3px 0px #FE8906;
+	box-shadow:         0px 4px 3px 0px #FE8906;
+
+}
+
+.couche4{
+	position:center;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-top:5px;
+	margin-left:3px;
+	width:275px;
+    text-align: center;
+	height:18px;
+	background:#FFD053;
+	
+}
+
+
+/*effects*/
+.couche1:active{
+	width:280px;
+	height:80px;
+}
+
+.couche1:active .couche2{
+	width:274px;
+	height:44px;
+}
+
+.couche1:active .couche23{
+	width:272px;
+	height:30px;
+}
+
+.couche1:active .couche3{
+	width:261px;
+	height:22px;
+}
+
+.couche1:active .couche4{
+	width:255px;
+	height:18px;
+}
+
+.couche1:active .couche5{
+	width:6px;
+	height:9px;
+	
+}
+
+.couche1:active .battle{
+	margin-top:-3px; 
+	margin-left:5px;
+}
+
+
+
+#green2{
+	background:#09CC48;
+	-webkit-box-shadow: 0px 9px 0px #0D8F23;
+    -moz-box-shadow: 0px 9px 0px #0D8F23;
+    box-shadow: 0px 9px 0px #0D8F23;
+
+}
+
+#green23{
+	-webkit-box-shadow: 0px -4px 5px 0px #60DA61;
+    -moz-box-shadow:    0px -4px 5px 0px #60DA61;
+	box-shadow:         0px -4px 5px 0px #60DA61;
+	
+}
+
+#green3{
+	background:#30ED45;
+	-webkit-box-shadow: 0px 4px 3px 0px #25D039;
+	-moz-box-shadow:    0px 4px 3px 0px #25D039;
+	box-shadow:         0px 4px 3px 0px #25D039;
+		
+}
+
+#green4{
+	background:#50FF65;
+	
+}
+
+#green5{
+	background:#D9FFFF;
+	
+	
+}
+
+#battle_green{
+	text-shadow: -1px 0 1px #005F00, 
+             	1px 0 1px #005F00,
+             	0 -1px 1px #005F00,
+             	0 4px 1px #005F00,
+             	-2px 4px 1px #005F00,
+             	2px 3px 2px #005F00;
+    color:#FEFEFE;
+    
+}
+.battle {
+    text-align: center;
+    font-size: 30px;
+   
+}
+small {
+    margin-top: 10px;
+    color: white;
+}
+
+
+#blue2{
+	background:#2199FF;
+	-webkit-box-shadow: 0px 9px 0px #004FA5;
+    -moz-box-shadow: 0px 9px 0px #004FA5;
+    box-shadow: 0px 9px 0px #004FA5;
+
+}
+
+#blue23{
+	-webkit-box-shadow: 0px -4px 5px 0px #3EBAFF;
+    -moz-box-shadow:    0px -4px 5px 0px #3EBAFF;
+	box-shadow:         0px -4px 5px 0px #3EBAFF;
+	
+}
+
+#blue3{
+	background:#4CADFF;
+	-webkit-box-shadow: 0px 4px 3px 0px #2181FC;
+	-moz-box-shadow:    0px 4px 3px 0px #2181FC;
+	box-shadow:         0px 4px 3px 0px #2181FC;
+		
+}
+
+#blue4{
+	background:#67BCFF;
+	
+}
+
+#blue5{
+	background:#D9FFFF;
+	
+	
+}
+
+#battle_blue{
+	text-shadow: -1px 0 1px #002F83, 
+             	1px 0 1px #002F83,
+             	0 -1px 1px #002F83,
+             	0 4px 1px #002F83,
+             	-2px 4px 1px #002F83,
+             	2px 3px 2px #002F83;
+    color:#FEFEFE;
+}
+
