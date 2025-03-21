@@ -17,15 +17,22 @@ function FetchGameData() {
       .then((response) => response.json())
       .then((data) => {
         console.log("API Response:", data); // Debugging line
+        console.log("Solution:", data.solution); // Debugging line
+
         setData(data);
-        const solution = new URLSearchParams(data.solution.slice(1));
+        
+        
+        
+      
         const correctAnswer = parseInt(solution.get("banana"));
-        console.log("Correct Answer:", correctAnswer); // Debugging line
-        setAnswer(correctAnswer);
+        const correctAns = ({solution})
+        console.log("Correct Answer:", correctAns); // Debugging line
+        setAnswer(correctAns);
         setRefreshBalloons((prev) => !prev); // Toggle to refresh balloons
       })
       .catch((error) => {
-        console.error("Error fetching question:", error);
+        console.log("Error fetching question:", error);
+        
       });
   };
 
@@ -35,11 +42,15 @@ function FetchGameData() {
 
   const handleBalloonClick = (number) => {
     if (number === answer) {
-      setScore(score + 10);
-      setGameWon(true);
-      // Fetch new question and continue the game
-      fetchQuestion();
-      setGameWon(false);
+      const newScore = score + 10;
+      setScore(newScore);
+
+      if (newScore >= 100) {
+        setGameWon(true); // Trigger game won notification
+      } else {
+        fetchQuestion(); // Fetch new question if the game is not won
+        setRefreshBalloons((prev) => !prev);
+      }
     } else {
       setLives(lives - 1);
       // Shake animation for wrong answers
@@ -50,13 +61,12 @@ function FetchGameData() {
       setTimeout(() => {
         balloons.forEach((b) => b.classList.remove("shake"));
       }, 500);
-      // Generate new balloons
       setRefreshBalloons((prev) => !prev); // Toggle to refresh balloons
     }
   };
 
   const resetGame = () => {
-    setData(null);
+    setData(data);
     setGameWon(false);
     setLives(3);
     setScore(0);
@@ -71,9 +81,7 @@ function FetchGameData() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="logoname" >
-                Balloon math
-              </h1>
+              <h1 className="logoname">Balloon Math</h1>
             </div>
           </div>
 
@@ -95,7 +103,7 @@ function FetchGameData() {
       </div>
 
       <Balloon
-        correctAnswer={answer}
+        correctAns ={answer}
         handleBalloonClick={handleBalloonClick}
         refreshBalloons={refreshBalloons}
       />
@@ -105,6 +113,15 @@ function FetchGameData() {
           <h2>Game Over! 😢</h2>
           <button className="btn btn-danger" onClick={resetGame}>
             Try Again
+          </button>
+        </div>
+      )}
+
+      {gameWon && (
+        <div className="game-won">
+          <h2>🎉 Congratulations! You Won! 🎉</h2>
+          <button className="btn btn-success" onClick={resetGame}>
+            Play Again
           </button>
         </div>
       )}
