@@ -21,12 +21,7 @@ function FetchGameData() {
 
         setData(data);
         
-        
-        
-      
-        const correctAnswer = parseInt(solution.get("banana"));
-        const correctAns = ({solution})
-        console.log("Correct Answer:", correctAns); // Debugging line
+        const correctAns = parseInt (data.solution)
         setAnswer(correctAns);
         setRefreshBalloons((prev) => !prev); // Toggle to refresh balloons
       })
@@ -102,6 +97,7 @@ function FetchGameData() {
         />
       </div>
 
+    {/* //state variable is passed as a prop to the Balloon component */}
       <Balloon
         correctAns ={answer}
         handleBalloonClick={handleBalloonClick}

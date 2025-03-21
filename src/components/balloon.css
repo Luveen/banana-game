@@ -1,7 +1,7 @@
 .balloon-container {
   position: relative;
   width: 100%;
-  height: 280px; /* Adjust the height as needed */
+  height: 270px; /* Adjust the height as needed */
   overflow: hidden; /* Ensure balloons stay within the container */
   border: 5px dashed  rgb(255, 255, 255) ; /* Optional: Add a border for visual reference */
  
@@ -11,22 +11,22 @@
   position: absolute;
   bottom: 0;
   width: 50px;
-  height: 70px;
-  border-radius: 50%;
+  height: 80px;
+  border-radius: 80%;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   font-weight: bold;
-  animation: float 10s linear infinite;
+  animation: float 12s linear infinite;
   text-align: center;
 }
 
 .balloon-number {
   position: relative;
-  z-index: 4;
-  font-size: 1.2em; /* Adjust the font size as needed */
+  z-index: 2;
+  font-size: 1.5em; /* Adjust the font size as needed */
   color: white; /* Ensure the text color contrasts with the balloon background */
 }
 
@@ -43,13 +43,25 @@
   0% {
     transform: translateY(0);
   }
+  20% {
+    transform: translateX(-20%);
+  }
+  44% {
+    transform: translateY(-44%);
+  }
+  60% {
+    transform: translateX(60%);
+  }
+  82% {
+    transform: translateY(-82%);
+  }
   100% {
     transform: translateY(-100%);
   }
 }
 
 .popped {
-  animation: pop 0.1s forwards;
+  animation: pop 0.2s forwards;
 }
 
 @keyframes pop {
@@ -70,9 +82,9 @@
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(10px); }
-  50% { transform: translateX(-10px); }
+  50% { transform: translateY(-10px); }
   75% { transform: translateX(10px); }
-  100% { transform: translateX(0); }
+  100% { transform: translateY(0); }
 }
 
 
