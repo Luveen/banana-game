@@ -8,8 +8,8 @@ import Login from './components/login.jsx'
 function App() {
   return (
     <div>
-      {/* <Login /> */}
-      <FetchGameData /> 
+      <Login />
+      {/* <FetchGameData />  */}
     </div>
   );
 }
