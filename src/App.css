@@ -83,53 +83,52 @@ html, body {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-.game-logo {
-  width: 100px; /* Adjust the width as needed */
-  height: auto;
-  background-image: url(./assets/logo.png);
-  background-repeat: no-repeat;
-}
+
 /* new */
 .game-container {
   text-align: center;
   min-height: 100vh;
-  background: url(./assets/game-background.jpg) no-repeat center fixed;
+  background: url(./assets/login-background-image.jpg) no-repeat center fixed;
   background-size: cover;
-  padding: 20px;
   width: 100%;
 }
 
 .question-image {
   max-width: 500px;
-  margin: 20px auto;
-  border: 2px solid #ddd;
+  margin-bottom: 22px;
+  border: 5px solid #FFD700;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 
-@keyframes float {
+/* @keyframes float {
   0% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(-100%);
   }
-}
+} */
 
-.popped {
-  background: transparent;
+/* .popped {
+  background: white;
   border: none;
-  animation: none;
-}
+  animation:both;
+  transform: scale(1.5);
+} */
 
 .logoname{
-  color: white;
+  color: #FFD700;
   
 }
 .score-board span{
-  color: white;
-  padding-bottom: 0%;
+  color:#FFD700;
+  font-size: 30px;
+  border: 2px solid #FFD700;
+  border-radius: 21px;
+  padding: 20px;
+
+  
 }
 
 .game-won {

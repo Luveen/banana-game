@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Balloon from "./components/balloon";
+import Signup from "./components/signup";
 
 function FetchGameData() {
   const [data, setData] = useState(null);
@@ -20,14 +21,13 @@ function FetchGameData() {
         console.log("Solution:", data.solution); // Debugging line
 
         setData(data);
-        
-        const correctAns = parseInt (data.solution)
+
+        const correctAns = parseInt(data.solution);
         setAnswer(correctAns);
         setRefreshBalloons((prev) => !prev); // Toggle to refresh balloons
       })
       .catch((error) => {
         console.log("Error fetching question:", error);
-        
       });
   };
 
@@ -81,25 +81,68 @@ function FetchGameData() {
           </div>
 
           <div className="row">
+            <div className="col-md-4">
+              <button className="btn btn-warning" onClick={fetchQuestion}>
+                New Question
+              </button>
+            </div>
+
+            <div className="col-md-4">
+              <button
+                className="btn btn-info"
+                onClick={() => navigateToLeaderboard()}
+              >
+                Leaderboard
+              </button>
+            </div>
+            <div className="col-md-4">
+              <button
+                className="btn btn-danger"
+                onClick={() => window.location.reload()}
+              >
+                Exit Game
+              </button>
+            </div>
+          </div>
+<br />
+          <div className="row">
+            <div className="col-md-4">
+              <div className="score-board">
+                <span>Score: {score}</span>
+                
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="question-section">
+                <img
+                  src={data.question}
+                  alt="Math problem"
+                  className="question-image"
+                />
+              </div>
+            </div>
+
+            <div className="col-md-4"> 
             <div className="score-board">
-              <span>Score: {score}</span>
-              <span>Lives: {"❤️".repeat(lives)}</span>
+                <span>Lives: {"❤️".repeat(lives)}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="question-section">
+      {/* <div className="question-section">
         <img
           src={data.question}
           alt="Math problem"
           className="question-image"
         />
-      </div>
+      </div> */}
 
-    {/* //state variable is passed as a prop to the Balloon component */}
+      {/* //state variable is passed as a prop to the Balloon component */}
       <Balloon
-        correctAns ={answer}
+        correctAns={answer}
         handleBalloonClick={handleBalloonClick}
         refreshBalloons={refreshBalloons}
       />

@@ -1,8 +1,28 @@
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 
+
+
 function Login() {
+  const  navigate = useNavigate();
+  const handleLogin = () => {
+    // Add your login logic here (e.g., form validation, API call, etc.)
+    console.log("Login successful!");
+
+
+    // Navigate to the Game page
+    navigate("/game");
+  }
+
+  const handleSignup = () => {
+    // Add your sign-up logic here (e.g., form validation, API call, etc.)
+    console.log("Account created successfully!");
+
+    // Navigate to the Login page
+    navigate("/signup");
+  }
   return (
     <>
       <div className="container-fluid">
@@ -24,7 +44,7 @@ function Login() {
 
               {/* adding button login */}
 
-              <div class="couche1" id="green1">
+              <div class="couche1" id="green1" onClick={handleLogin}>
                 <div class="couche2" id="green2">
                   <div class="couche23" id="green23">
                     <div class="couche3" id="green3">
@@ -39,7 +59,7 @@ function Login() {
               </div>
               <br />
 
-              <div class="couche1" id="blue1">
+              <div class="couche1" id="blue1" onClick={handleSignup} >
                 <div class="couche2" id="blue2">
                   <div class="couche23" id="blue23">
                     <div class="couche3" id="blue3">

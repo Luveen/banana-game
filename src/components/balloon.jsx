@@ -7,41 +7,48 @@ const Balloon = ({ correctAns, handleBalloonClick, refreshBalloons }) => {
   const generateBalloons = () => {
     const newBalloons = [];
     const numberOfBalloons = Math.floor(Math.random() * 4) + 5; // Generate between 5 and 8 balloons
+    const containerWidth = 100; // Percentage width of the container
+    const containerHeight = 100; // Percentage height of the container
+    const balloonSize = 10; // Approximate size of the balloon in percentage
 
-    // Add the correct answer balloon
-    newBalloons.push({
-      number: correctAns,
-      id: 0,
-      style: {
-        left: `${Math.random() * 80}%`,
-        animationDuration: `${10 + Math.random() * 10}s`,
-        animationDelay: `${Math.random() * 5}s`,
-        backgroundColor: `hsl(${Math.random() * 360}, 70%, 60%)`,
-      },
-    });
+    const isOverlapping = (x1, y1, x2, y2) => {
+      return (
+        Math.abs(x1 - x2) < balloonSize && Math.abs(y1 - y2) < balloonSize
+      );
+    };
 
-    // Add random balloons
-    for (let i = 1; i < numberOfBalloons; i++) {
-      let randomNum;
+    const generateRandomPosition = () => {
+      return {
+        x: Math.random() * (containerWidth - balloonSize),
+        y: Math.random() * (containerHeight - balloonSize),
+      };
+    };
+
+    for (let i = 0; i < numberOfBalloons; i++) {
+      let position;
+      let overlapping;
+
       do {
-        randomNum = Math.floor(Math.random() * 9) + 1; // Generate random numbers between 1 and 9
-      } while (randomNum === correctAns); // Ensure no duplicate of the correct answer
+        position = generateRandomPosition();
+        overlapping = newBalloons.some((balloon) =>
+          isOverlapping(balloon.style.left, balloon.style.top, position.x, position.y)
+        );
+      } while (overlapping);
 
       newBalloons.push({
-        number: randomNum,
+        number: i === 0 ? correctAns : Math.floor(Math.random() * 9) + 1, // Ensure one balloon has the correct answer
         id: i,
         style: {
-          left: `${Math.random() * 80}%`,
-          animationDuration: `${10 + Math.random() * 10}s`,
-          animationDelay: `${Math.random() * 5}s`,
+          left: `${position.x}%`,
+          top: `${position.y}%`,
+          animationDuration: `${10 + Math.random() * 5}s`,
+          animationDelay: `${Math.random() * 2}s`,
           backgroundColor: `hsl(${Math.random() * 360}, 70%, 60%)`,
         },
       });
     }
 
-    // Shuffle the balloons to randomize their order
-    console.log("Generated Balloons:", newBalloons); // Debugging line
-    setBalloons(newBalloons.sort(() => Math.random() - 0.5));
+    setBalloons(newBalloons);
   };
 
   useEffect(() => {
