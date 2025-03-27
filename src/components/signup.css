@@ -1,41 +1,29 @@
-body {
-  background-image: url(../assets/login-background-image.jpg);
-  background-size: cover; /* Ensure the background image covers the entire screen */
-}
-.heading {
-  color: #ffd700;
-  
-  text-align: center;
-  padding-top: 20px;
-}
-
-
-.login-fields {
+.signup-fields {
   padding: 60px;
   height: 500px;
-  width: 7000px;
-  background-image: url("../assets/background-window.png"); 
+  width: 700px;
+  background-image: url("../assets/background-window.png");
   min-height: 100%;
   border-radius: 12px;
   margin: 0 29%;
   background-repeat: no-repeat;
-  
 }
-.login-fields h1 {
-  color: #FFD700;
+.signup-fields h1 {
+  color: #ffd700;
   letter-spacing: 5%;
   font-size: 30px;
 }
-.login-fields input{
-    direction: none;
-    border-radius: 8px;
-    background: transparent;
-    border: 3px solid black;
-    width: 548px;
-    height: 50px;
-    margin-bottom: 20px;
-	background-color: white;
+.signup-fields input {
+  direction: none;
+  border-radius: 8px;
+  background: transparent;
+  border: 3px solid black;
+  width: 548px;
+  height: 40px;
+  margin-bottom: 20px;
+  background-color: white;
 }
+
 
 /* button css */
 .couche1{
@@ -43,10 +31,10 @@ body {
 	-webkit-border-radius: 11px;
 	-moz-border-radius: 11px;
 	border-radius: 11px;
-	width:300px;
+	width:500px;
 	height:80px;
     cursor:pointer;
-    margin : -20px 130px;
+    margin : -40px 90px;
     padding-top: 40px;
 }
 
@@ -55,7 +43,7 @@ body {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	width:294px;
+	width:394px;
 	height:44px;
 	margin-top:3px;
 	margin-left:3px;
@@ -71,7 +59,7 @@ body {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	width:292px;
+	width:392px;
 	height:30px;
 	margin-top:5px;
 	margin-left:1px;
@@ -89,7 +77,7 @@ body {
 	border-radius: 10px;
 	margin-top:0px;
 	margin-left:5px;
-	width:281px;
+	width:381px;
 	height:22px;
 	background:rgba(255,187,42,1);
 	-webkit-box-shadow: 0px 4px 3px 0px #FE8906;
@@ -103,9 +91,9 @@ body {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	margin-top:5px;
+	margin-top:0px;
 	margin-left:3px;
-	width:275px;
+	width:375px;
     text-align: center;
 	height:18px;
 	background:#FFD053;
@@ -115,32 +103,32 @@ body {
 
 /*effects*/
 .couche1:active{
-	width:280px;
+	width:380px;
 	height:80px;
 }
 
 .couche1:active .couche2{
-	width:274px;
+	width:374px;
 	height:44px;
 }
 
 .couche1:active .couche23{
-	width:272px;
+	width:372px;
 	height:30px;
 }
 
 .couche1:active .couche3{
-	width:261px;
+	width:361px;
 	height:22px;
 }
 
 .couche1:active .couche4{
-	width:255px;
+	width:355px;
 	height:18px;
 }
 
 .couche1:active .couche5{
-	width:6px;
+	width:326px;
 	height:9px;
 	
 }
@@ -149,63 +137,6 @@ body {
 	margin-top:-3px; 
 	margin-left:5px;
 }
-
-
-
-#green2{
-	background:#09CC48;
-	-webkit-box-shadow: 0px 9px 0px #0D8F23;
-    -moz-box-shadow: 0px 9px 0px #0D8F23;
-    box-shadow: 0px 9px 0px #0D8F23;
-
-}
-
-#green23{
-	-webkit-box-shadow: 0px -4px 5px 0px #60DA61;
-    -moz-box-shadow:    0px -4px 5px 0px #60DA61;
-	box-shadow:         0px -4px 5px 0px #60DA61;
-	
-}
-
-#green3{
-	background:#30ED45;
-	-webkit-box-shadow: 0px 4px 3px 0px #25D039;
-	-moz-box-shadow:    0px 4px 3px 0px #25D039;
-	box-shadow:         0px 4px 3px 0px #25D039;
-		
-}
-
-#green4{
-	background:#50FF65;
-	
-}
-
-#green5{
-	background:#D9FFFF;
-	
-	
-}
-
-#battle_green{
-	text-shadow: -1px 0 1px #005F00, 
-             	1px 0 1px #005F00,
-             	0 -1px 1px #005F00,
-             	0 4px 1px #005F00,
-             	-2px 4px 1px #005F00,
-             	2px 3px 2px #005F00;
-    color:#FEFEFE;
-    
-}
-.battle {
-    text-align: center;
-    font-size: 30px;
-   
-}
-small {
-    margin-top: 10px;
-    color: white;
-}
-
 
 #blue2{
 	background:#2199FF;

@@ -3,12 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './app.css'
 import FetchGameData from './game.jsx';
 import Login from './components/login.jsx'
+import Signup from './components/signup.jsx'
 
 
 function App() {
   return (
     <div>
-      <Login />
+      <Signup />
+      {/* <Login /> */}
       {/* <FetchGameData />  */}
     </div>
   );
