@@ -1,15 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./signup.css";
 
-
 function Signup() {
+  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   const navigate = useNavigate();
 
-  const handleAccountCreation = () => {
+  const handleAccountCreation = (e) => {
     // Add your sign-up logic here (e.g., form validation, API call, etc.)
-    console.log("Account created successfully!");
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/register", {username, email, password})
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     // Navigate to the Login page
     navigate("/");
@@ -17,7 +29,7 @@ function Signup() {
   return (
     <>
       <div className="container-fluid">
-        <div className="row">
+        <div className="row" onSubmit={handleAccountCreation}>
           <div className="heading">
             <h1>Balloon Math</h1> <br />
             <h2>SIGNUP</h2>
@@ -32,15 +44,18 @@ function Signup() {
                 name="enter username "
                 id="username"
                 required
+                onChange={(e) => setUsername(e.target.value)}
               />
               <h1>Email</h1>
-              <input type="email" name="enter username " id="email" required />
+              <input type="email" name="enter username " id="email" required 
+              onChange={(e) => setEmail(e.target.value)} />
               <h1>password</h1>
               <input
                 type="password"
                 name="enter username "
                 id="password"
                 required
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               {/* adding button login */}

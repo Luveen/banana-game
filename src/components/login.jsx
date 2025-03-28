@@ -1,28 +1,37 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 
-
-
 function Login() {
-  const  navigate = useNavigate();
-  const handleLogin = () => {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
     // Add your login logic here (e.g., form validation, API call, etc.)
-    console.log("Login successful!");
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/login", { username, password })
+      .then((result) => {
+        console.log(result);
+        if (result.data === "Sucessfully logged in") {  
+          navigate("/game");
+        }
+        else {
+          console.log("Invalid credentials");
+        }
+        
+      })
+      .catch((err) => console.log(err));
 
-
-    // Navigate to the Game page
-    navigate("/game");
-  }
+  };
 
   const handleSignup = () => {
-    // Add your sign-up logic here (e.g., form validation, API call, etc.)
-    console.log("Account created successfully!");
-
-    // Navigate to the Login page
     navigate("/signup");
-  }
+  };
   return (
     <>
       <div className="container-fluid">
@@ -32,15 +41,24 @@ function Login() {
               <h1>Balloon Math</h1> <br />
               <h2>LOGIN</h2>
               <br />
-              
             </div>
           </div>
           <div className="col-md-12">
             <div className="login-fields justify-content-center">
               <h1>username</h1>
-              <input type="text" name="enter username " id="username" />
+              <input
+                type="text"
+                name="enter username "
+                id="username"
+                onChange={(e) => setUsername(e.target.value)}
+              />
               <h1>password</h1>
-              <input type="password" name="enter username " id="password" />
+              <input
+                type="password"
+                name="enter username "
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
               {/* adding button login */}
 
@@ -59,7 +77,7 @@ function Login() {
               </div>
               <br />
 
-              <div class="couche1" id="blue1" onClick={handleSignup} >
+              <div class="couche1" id="blue1" onClick={handleSignup}>
                 <div class="couche2" id="blue2">
                   <div class="couche23" id="blue23">
                     <div class="couche3" id="blue3">
@@ -72,12 +90,8 @@ function Login() {
                   </div>
                 </div>
               </div>
-             
             </div>
-            
           </div>
-          
-          
         </div>
       </div>
     </>
