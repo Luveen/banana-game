@@ -38,7 +38,7 @@ function Login() {
         <div className="row">
           <div className="col-md-12">
             <div className="heading">
-              <h1>Balloon Math</h1> <br />
+            <img src="src\assets\logoimg.png" alt="logo" height={100} /> <br />
               <h2>LOGIN</h2>
               <br />
             </div>

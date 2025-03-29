@@ -36,12 +36,13 @@ function Homepage() {
         <div class="container">
           <span class="hover-me">Hover me for Game Instructions!</span>
           <div class="tooltip">
-            <p>Balloon Math</p>
+            
+            <img src="src\assets\logoimg.png" alt="logo" height={20} />
             <p><b>How to Play</b></p>
             <p><b>Solve the Equation –</b> Look at the math problem displayed at the top.</p>
             <p><b>Find the Answer – </b> One of the floating balloons has the right number.</p>
             <p><b>Pop It! – </b> Click the correct balloon</p>
-            <p><b>Game Rules:</b></p>
+            <p><b>Game Rules</b></p>
             <p><b>✔ Correct Answer → </b>  +10 points!</p>
             <p><b>❌ Wrong Answer →</b> Lose 1 life (❤️).</p>
             <p><b>⏳ Timer (Hard Mode) –</b> Balloons move faster, and time decreases!</p>

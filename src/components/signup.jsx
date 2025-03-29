@@ -31,7 +31,7 @@ function Signup() {
       <div className="container-fluid">
         <div className="row" onSubmit={handleAccountCreation}>
           <div className="heading">
-            <h1>Balloon Math</h1> <br />
+          <img src="src\assets\logoimg.png" alt="logo" height={100} /> <br />
             <h2>SIGNUP</h2>
             <br />
           </div>

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Balloon from "./components/balloon";
-import Signup from "./components/signup";
+import Leaderboard from "./components/Leaderboard";
+
 
 function FetchGameData() {
   const [data, setData] = useState(null);
@@ -11,6 +13,8 @@ function FetchGameData() {
   const [lives, setLives] = useState(3);
   const [gameWon, setGameWon] = useState(false);
   const [refreshBalloons, setRefreshBalloons] = useState(false);
+
+  const navigate = useNavigate();
 
   // Fetch question from API
   const fetchQuestion = () => {
@@ -89,10 +93,10 @@ function FetchGameData() {
 
             <div className="col-md-4">
               <button
+                onClick={() => navigate("/leaderboard")}
                 className="btn btn-info"
-                onClick={() => navigateToLeaderboard()}
               >
-                Leaderboard
+                View Leaderboard
               </button>
             </div>
             <div className="col-md-4">
@@ -104,12 +108,11 @@ function FetchGameData() {
               </button>
             </div>
           </div>
-<br />
+          <br />
           <div className="row">
             <div className="col-md-4">
               <div className="score-board">
                 <span>Score: {score}</span>
-                
               </div>
             </div>
 
@@ -123,8 +126,8 @@ function FetchGameData() {
               </div>
             </div>
 
-            <div className="col-md-4"> 
-            <div className="score-board">
+            <div className="col-md-4">
+              <div className="score-board">
                 <span>Lives: {"❤️".repeat(lives)}</span>
               </div>
             </div>

@@ -20,8 +20,8 @@
   border: 3px solid black;
   width: 548px;
   height: 40px;
-  margin-bottom: 20px;
-  background-color: white;
+  margin-bottom: 10px;
+  background-color: rgb(255, 255, 255);
 }
 
 
@@ -47,7 +47,7 @@
 	height:44px;
 	margin-top:3px;
 	margin-left:3px;
-	background:#FDA80D;
+	background:#2d2413;
 	-webkit-box-shadow: 0px 9px 0px #AF6B06;
     -moz-box-shadow: 0px 9px 0px #AF6B06;
     box-shadow: 0px 9px 0px #AF6B06;
@@ -101,43 +101,6 @@
 }
 
 
-/*effects*/
-.couche1:active{
-	width:380px;
-	height:80px;
-}
-
-.couche1:active .couche2{
-	width:374px;
-	height:44px;
-}
-
-.couche1:active .couche23{
-	width:372px;
-	height:30px;
-}
-
-.couche1:active .couche3{
-	width:361px;
-	height:22px;
-}
-
-.couche1:active .couche4{
-	width:355px;
-	height:18px;
-}
-
-.couche1:active .couche5{
-	width:326px;
-	height:9px;
-	
-}
-
-.couche1:active .battle{
-	margin-top:-3px; 
-	margin-left:5px;
-}
-
 #blue2{
 	background:#2199FF;
 	-webkit-box-shadow: 0px 9px 0px #004FA5;
@@ -179,6 +142,6 @@
              	0 4px 1px #002F83,
              	-2px 4px 1px #002F83,
              	2px 3px 2px #002F83;
-    color:#FEFEFE;
+    color:#000000;
 }
 

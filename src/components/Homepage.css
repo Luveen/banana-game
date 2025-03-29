@@ -90,6 +90,7 @@
     transform: translateY(-100%) scaleY(1);
     border-radius: 8px;
     opacity: 1;
+    width: 450px;
     height: 260px;
   }
 }
