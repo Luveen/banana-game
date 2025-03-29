@@ -38,5 +38,5 @@ app.post("/register", (req, res) => {
     
 
 app.listen(3001, () => {
-    console.log("Server is running on s 5173");
+    console.log("Server is running ons s 5173");
 });
