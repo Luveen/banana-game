@@ -18,6 +18,10 @@ function Login() {
       .then((result) => {
         console.log(result);
         if (result.data === "Sucessfully logged in") {  
+
+          // Store the username in local storage
+          localStorage.setItem("username", username);
+
           navigate("/game");
         }
         else {

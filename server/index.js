@@ -36,16 +36,7 @@ app.post("/register", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-
-
-app.post("/leaderboard", (req, res) => {
-  LeaderboardModel.create(req.body)
-    .then((entry) => res.json(entry))
-    .catch((err) => res.json(err));
-});
-
-
-// score needs to be in decending order 
+// score needs to be in decending order
 app.get("/leaderboard", (req, res) => {
   LeaderboardModel.find(req.body)
     .sort({ score: -1 }) // Sort by score in descending order
@@ -53,6 +44,30 @@ app.get("/leaderboard", (req, res) => {
     .then((entries) => res.json(entries))
     .catch((err) => res.json(err));
 });
+
+// Update the leaderboard with the user's score
+app.post("/leaderboard", async (req, res) => {
+  const { username, score } = req.body;
+
+  if (!username || !score) {
+    return res.status(400).json({ error: "Username and score are required" });
+  }
+
+  try {
+    // Find the user in the leaderboard
+    const updatedEntry = await LeaderboardModel.findOneAndUpdate(
+      { username }, // Find by username
+      { $inc: { score } }, // Increment the score if the user exists
+      { new: true, upsert: true, setDefaultsOnInsert: true } // Create a new entry if the user doesn't exist
+    );
+
+    res.json(updatedEntry);
+  } catch (err) {
+    console.error("Error updating leaderboard:", err);
+    res.status(500).json("Server error");
+  }
+});
+
 
 app.listen(3001, () => {
   console.log("Server is running on 3001");

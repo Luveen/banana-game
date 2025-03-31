@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Balloon from "./components/balloon";
-import Leaderboard from "./components/Leaderboard";
-
+import axios from "axios";
 
 function FetchGameData() {
   const [data, setData] = useState(null);
@@ -39,10 +38,36 @@ function FetchGameData() {
     fetchQuestion();
   }, []);
 
+  const updateLeaderboard = (username, score) => {
+    console.log("Sending leaderboard update:", { username, score }); // Debugging line
+  
+    axios
+      .post("http://localhost:3001/leaderboard", { username, score })
+      .then((response) => {
+        console.log("Leaderboard updated successfully:", response.data);
+      })
+      .catch((err) => {
+        console.error("Error updating leaderboard:", err);
+      });
+  };
+
   const handleBalloonClick = (number) => {
     if (number === answer) {
       const newScore = score + 10;
       setScore(newScore);
+
+      // Retrieve the username from local storage
+      const username = localStorage.getItem("username");
+
+      if (!username) {
+        console.error("Username is missing. Cannot update leaderboard.");
+        return;
+      }
+
+      console.log("Username:", username);
+
+      // Update the leaderboard in the backend
+      updateLeaderboard(username, newScore);
 
       if (newScore >= 100) {
         setGameWon(true); // Trigger game won notification
@@ -52,14 +77,6 @@ function FetchGameData() {
       }
     } else {
       setLives(lives - 1);
-      // Shake animation for wrong answers
-      const balloons = document.querySelectorAll(".balloon");
-      balloons.forEach((b) => {
-        if (b.textContent == number) b.classList.add("shake");
-      });
-      setTimeout(() => {
-        balloons.forEach((b) => b.classList.remove("shake"));
-      }, 500);
       setRefreshBalloons((prev) => !prev); // Toggle to refresh balloons
     }
   };

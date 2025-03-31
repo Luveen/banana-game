@@ -2,6 +2,7 @@
   text-align: center;
   margin: 20px auto;
   max-width: 600px;
+  
 }
 .leaderboard-container h1{
     color: #FFD700;
@@ -11,6 +12,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  color: rgb(221, 255, 0);
 }
 
 .leaderboard-table th,
@@ -24,10 +26,6 @@
   color: white;
 }
 
-.leaderboard-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 
-.leaderboard-table tr:hover {
-  background-color: #ddd;
-}
+
+
