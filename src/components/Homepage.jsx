@@ -33,9 +33,9 @@ function Homepage() {
           </div>
         </div>
 
-        <div class="container">
-          <span class="hover-me">Hover me for Game Instructions!</span>
-          <div class="tooltip">
+        <div className="container">
+          <span className="hover-me">Hover over me for Game Instructions!</span>
+          <div className="tooltip">
             
             <img src="src\assets\logoimg.png" alt="logo" height={20} />
             <p><b>How to Play</b></p>

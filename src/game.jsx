@@ -15,6 +15,19 @@ function FetchGameData() {
 
   const navigate = useNavigate();
 
+
+  // Retrieve the score from local storage or initialize to 0
+  useEffect(() => {
+    const storedScore = parseInt(localStorage.getItem("score")) || 0;
+    setScore(storedScore);
+  }, []);
+
+  useEffect(() => {
+    // Save the score to local storage whenever it changes
+    localStorage.setItem("score", score);
+  }, [score]);
+
+
   // Fetch question from API
   const fetchQuestion = () => {
     fetch("https://marcconrad.com/uob/banana/api.php")
@@ -38,22 +51,26 @@ function FetchGameData() {
     fetchQuestion();
   }, []);
 
-  const updateLeaderboard = (username, score) => {
-    console.log("Sending leaderboard update:", { username, score }); // Debugging line
-  
+  const updateLeaderboard = (username) => {
+    if (!username) {
+      console.error("Username is missing. Cannot update leaderboard.");
+      return;
+    }
+    console.log("Sending leaderboard update:", username ); // Debugging line
+
     axios
-      .post("http://localhost:3001/leaderboard", { username, score })
+      .post("http://localhost:3001/leaderboard", { username })
       .then((response) => {
         console.log("Leaderboard updated successfully:", response.data);
       })
       .catch((err) => {
-        console.error("Error updating leaderboard:", err);
+        console.error("Error updating leaderboard:", err.response?.data || err);
       });
   };
 
   const handleBalloonClick = (number) => {
     if (number === answer) {
-      const newScore = score + 10;
+      const newScore = score + 10; // Update the local score by 10
       setScore(newScore);
 
       // Retrieve the username from local storage
@@ -64,10 +81,10 @@ function FetchGameData() {
         return;
       }
 
-      console.log("Username:", username);
+      console.log("Updating leaderboard for username:", username);
 
-      // Update the leaderboard in the backend
-      updateLeaderboard(username, newScore);
+      // Update the leaderboard in the backend (increments score by 10)
+      updateLeaderboard(username);
 
       if (newScore >= 100) {
         setGameWon(true); // Trigger game won notification
@@ -80,6 +97,8 @@ function FetchGameData() {
       setRefreshBalloons((prev) => !prev); // Toggle to refresh balloons
     }
   };
+
+  
 
   const resetGame = () => {
     setData(data);
@@ -117,10 +136,7 @@ function FetchGameData() {
               </button>
             </div>
             <div className="col-md-4">
-              <button
-                className="btn btn-danger"
-                onClick={() => window.location.reload()}
-              >
+              <button className="btn btn-danger" onClick={() => navigate("/")}>
                 Exit Game
               </button>
             </div>

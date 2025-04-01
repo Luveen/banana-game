@@ -1,62 +1,12 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import "./leaderboard.css";
-
-// function Leaderboard() {
-//   const [leaderboard, setLeaderboard] = useState([]);
-
-//   useEffect(() => {
-//     // Fetch leaderboard data from the backend
-//     axios
-//       .get("http://localhost:3001/leaderboard")
-//       .then((response) => {
-//         setLeaderboard(response.data);
-//       })
-//       .catch((err) => console.log("Error fetching leaderboard data:", err));
-//   }, []);
-
-//   return (
-//     <div className="leaderboard-container">
-//       <img src="src/assets/logoimg.png" alt="logo" height={100} /> <br />
-//       <h1>Leaderboard</h1>
-//       <table className="leaderboard-table">
-//         <thead>
-//           <tr>
-//             <th>Rank</th>
-//             <th>Username</th>
-//             <th>Score</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {leaderboard.length === 0 ? (
-//             <tr>
-//               <td colSpan="3">No data available</td>
-//             </tr>
-//           ) : (
-//             leaderboard.map((entry, index) => (
-//               <tr key={entry._id}>
-//                 <td>{index + 1}</td>
-//                 <td>{entry.username}</td>
-//                 <td>{entry.score}</td>
-//               </tr>
-//             ))
-//           )}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// }
-
-// export default Leaderboard;
-
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./leaderboard.css";
+import { useNavigate } from "react-router-dom";
 
 function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
@@ -76,29 +26,29 @@ function Leaderboard() {
         <thead>
           <tr>
             <th>
-              <a
-                className="btn btn m-1 fw-bold"
+              <h4
+                className="table-id m-1"
                 style={{ width: "40px", cursor: "auto" }}
               >
                 ID
                 <i className="bi bi-trophy-fill"></i>
-              </a>
+              </h4>
             </th>
             <th>
-              <a
-                className="btn btn   m-1 fw-bold"
-                style={{ width: "150px", cursor: "auto" }}
+              <h4
+                className="table-username m-1 fw-bold"
+                style={{ width: "100px",  textAlign: "center" }}
               >
                 Username
-              </a>
+              </h4>
             </th>
             <th>
-              <a
-                className="btn btn m-1 fw-bold"
+              <h4
+                className="table-score m-1"
                 style={{ width: "50px", cursor: "auto" }}
               >
                 Score
-              </a>
+              </h4>
             </th>
           </tr>
         </thead>
@@ -111,34 +61,49 @@ function Leaderboard() {
             leaderboard.map((entry, index) => (
               <tr key={entry._id}>
                 <td>
-                  <a
-                    className="btn btn-danger m-1 fw-bold"
+                  <p
+                    className="table-data-id m-1"
                     style={{ width: "40px", cursor: "auto" }}
                   >
                     {index + 1}
-                  </a>
+                  </p>
                 </td>
                 <td>
-                  <a
-                    className="btn btn-danger m-1 fw-bold"
-                    style={{ width: "150px", cursor: "auto" }}
+                  <p
+                    className="table-data-username m-1 fw-bold"
+                    style={{ width: "100px", cursor: "auto", textAlig: "center" }}
                   >
                     {entry.username}
-                  </a>
+                  </p>
                 </td>
                 <td>
-                  <a
-                    className="btn btn-danger m-1 fw-bold"
+                  <p
+                    className="table-data-score m-1"
                     style={{ width: "50px", cursor: "auto" }}
                   >
                     {entry.score}
-                  </a>
+                  </p>
                 </td>
               </tr>
             ))
           )}
         </tbody>
       </table>
+
+      <div className="leaderboard-buttons">
+        <button
+          className="btn btn-success m-2"
+          onClick={() => navigate("/game")} // Navigate back to the game page
+        >
+          Back to Game
+        </button>
+        <button
+          className="btn btn-danger m-2"
+          onClick={() => navigate("/")} // Navigate to the homepage
+        >
+          Exit
+        </button>
+      </div>
     </div>
   );
 }
