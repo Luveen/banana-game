@@ -100,23 +100,6 @@ html, body {
   border-radius: 8px;
 }
 
-
-/* @keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-} */
-
-/* .popped {
-  background: white;
-  border: none;
-  animation:both;
-  transform: scale(1.5);
-} */
-
 .logoname{
   color: #FFD700;
   

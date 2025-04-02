@@ -4,7 +4,7 @@
   height: 270px; /* Adjust the height as needed */
   overflow: hidden; /* Ensure balloons stay within the container */
   box-shadow: 0 0 20px #FFD700; /* Add a shadow to the container */
-  border-radius: 222px;
+  border-radius: 22px;
 }
 
 .balloon {
