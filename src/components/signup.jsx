@@ -60,12 +60,12 @@ function Signup() {
 
               {/* adding button login */}
 
-              <div class="couche1" id="blue1" onClick={handleAccountCreation}>
-                <div class="couche2" id="blue2">
-                  <div class="couche23" id="blue23">
-                    <div class="couche3" id="blue3">
-                      <div class="couche4" id="blue4">
-                        <span class="battle" id="battle_blue">
+              <div className="couc1" id="blue1" onClick={handleAccountCreation}>
+                <div className="couc2" id="blue2">
+                  <div className="couc23" id="blue23">
+                    <div className="couc3" id="blue3">
+                      <div className="couc4" id="blue4">
+                        <span className="battle" id="battlee_blue">
                           Create Account
                         </span>
                       </div>

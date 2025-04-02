@@ -8,25 +8,12 @@ import axios from "axios";
 function FetchGameData() {
   const [data, setData] = useState(null);
   const [answer, setAnswer] = useState(null);
-  const [score, setScore] = useState(0);
-  const [lives, setLives] = useState(3);
+  const [score, setScore] = useState(0); // Initialize score to 0
+  const [lives, setLives] = useState(3); // Initialize lives to 3
   const [gameWon, setGameWon] = useState(false);
   const [refreshBalloons, setRefreshBalloons] = useState(false);
 
   const navigate = useNavigate();
-
-
-  // Retrieve the score from local storage or initialize to 0
-  useEffect(() => {
-    const storedScore = parseInt(localStorage.getItem("score")) || 0;
-    setScore(storedScore);
-  }, []);
-
-  useEffect(() => {
-    // Save the score to local storage whenever it changes
-    localStorage.setItem("score", score);
-  }, [score]);
-
 
   // Fetch question from API
   const fetchQuestion = () => {
@@ -51,15 +38,44 @@ function FetchGameData() {
     fetchQuestion();
   }, []);
 
-  const updateLeaderboard = (username) => {
+  // Initialize lives and score for a new game
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+
+    if (!storedUsername) {
+      console.error("Username is missing. Please log in again.");
+      navigate("/"); // Redirect to login if username is missing
+    }
+
+    // Reset lives and score for a new game
+    setScore(0);
+    setLives(3);
+
+    // Save initial values to local storage
+    localStorage.setItem("score", 0);
+    localStorage.setItem("lives", 3);
+  }, []);
+
+  // Save the score and lives to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem("score", score);
+  }, [score]);
+
+  useEffect(() => {
+    localStorage.setItem("lives", lives);
+  }, [lives]);
+
+  const updateLeaderboard = (username, score) => {
     if (!username) {
       console.error("Username is missing. Cannot update leaderboard.");
       return;
     }
-    console.log("Sending leaderboard update:", username ); // Debugging line
 
+    console.log("Sending leaderboard update for username:", username, "Score:", score);
+
+    // Send username and score to the backend
     axios
-      .post("http://localhost:3001/leaderboard", { username })
+      .post("http://localhost:3001/leaderboard", { username, score })
       .then((response) => {
         console.log("Leaderboard updated successfully:", response.data);
       })
@@ -70,8 +86,8 @@ function FetchGameData() {
 
   const handleBalloonClick = (number) => {
     if (number === answer) {
-      const newScore = score + 10; // Update the local score by 10
-      setScore(newScore);
+      const newScore = score + 10; // Calculate the new score
+      setScore(newScore); // Update the local score
 
       // Retrieve the username from local storage
       const username = localStorage.getItem("username");
@@ -83,8 +99,8 @@ function FetchGameData() {
 
       console.log("Updating leaderboard for username:", username);
 
-      // Update the leaderboard in the backend (increments score by 10)
-      updateLeaderboard(username);
+      // Update the leaderboard in the backend (send username and score)
+      updateLeaderboard(username, newScore);
 
       if (newScore >= 100) {
         setGameWon(true); // Trigger game won notification
@@ -93,18 +109,21 @@ function FetchGameData() {
         setRefreshBalloons((prev) => !prev);
       }
     } else {
-      setLives(lives - 1);
-      setRefreshBalloons((prev) => !prev); // Toggle to refresh balloons
+      setLives((prevLives) => prevLives - 1); // Decrease lives if the answer is incorrect
+      setRefreshBalloons((prev) => !prev); // Refresh balloons
     }
   };
-
-  
 
   const resetGame = () => {
     setData(data);
     setGameWon(false);
-    setLives(3);
-    setScore(0);
+    setLives(3); // Reset lives to 3
+    setScore(0); // Reset score to 0
+
+    // Save reset values to local storage
+    localStorage.setItem("score", 0);
+    localStorage.setItem("lives", 3);
+
     fetchQuestion();
   };
 
@@ -129,7 +148,11 @@ function FetchGameData() {
 
             <div className="col-md-4">
               <button
-                onClick={() => navigate("/leaderboard")}
+                onClick={() => {
+                  localStorage.setItem("score", score); // Save the score before navigating
+                  localStorage.setItem("lives", lives); // Save the lives before navigating
+                  navigate("/leaderboard");
+                }}
                 className="btn btn-info"
               >
                 View Leaderboard
@@ -168,15 +191,6 @@ function FetchGameData() {
         </div>
       </div>
 
-      {/* <div className="question-section">
-        <img
-          src={data.question}
-          alt="Math problem"
-          className="question-image"
-        />
-      </div> */}
-
-      {/* //state variable is passed as a prop to the Balloon component */}
       <Balloon
         correctAns={answer}
         handleBalloonClick={handleBalloonClick}
