@@ -11,7 +11,6 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    // Add your login logic here (e.g., form validation, API call, etc.)
     e.preventDefault();
     axios
       .post("http://localhost:3001/login", { username, password })
@@ -21,11 +20,13 @@ function Login() {
 
           // Store the username in local storage
           localStorage.setItem("username", username);
-
+          
+          alert("Sucessfully logged in");
           navigate("/game");
         }
         else {
           console.log("Invalid credentials");
+          alert("Invalid credentials");
         }
         
       })

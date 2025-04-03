@@ -52,7 +52,7 @@ const Balloon = ({ correctAns, handleBalloonClick, refreshBalloons }) => {
   };
 
   useEffect(() => {
-    generateBalloons();
+    generateBalloons(); // Generate new balloons
   }, [correctAns, refreshBalloons]);
 
   return (
